@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2017 Nathan Chancellor
+# Copyright (C) 2018 Ungoogled-Lineage
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,9 +23,9 @@
 #         #
 ###########
 
-# PURPOSE: Merge Substratum support from LineageOMS org into LineageOS repos
+# PURPOSE: Merge Substratum support from Ungoogled-Lineage org into LineageOS repos
 #
-# USAGE: $ bash lineage_oms_merge.sh -h
+# USAGE: $ bash lineage_ungoogled_merge.sh -h
 
 
 ############
@@ -90,9 +91,9 @@ function format_time() {
 
 # PRINTS A HELP MENU
 function help_menu() {
-    echo -e "\n${BOLD}OVERVIEW:${RESTORE} Merges full Substratum support from LineageOMS organization into a LineageOS set of repos\n"
-    echo -e "${BOLD}USAGE:${RESTORE} bash lineage_oms_merge.sh <source_dir>\n"
-    echo -e "${BOLD}EXAMPLE:${RESTORE} bash lineage_oms_merge.sh ~/Android/Lineage\n"
+    echo -e "\n${BOLD}OVERVIEW:${RESTORE} Merges full Substratum support from Ungoogled-Lineage organization into a LineageOS set of repos\n"
+    echo -e "${BOLD}USAGE:${RESTORE} bash lineage_ungoogled_merge.sh <source_dir>\n"
+    echo -e "${BOLD}EXAMPLE:${RESTORE} bash lineage_ungoogled_merge.sh ~/Android/Lineage\n"
     echo -e "${BOLD}Required options:${RESTORE}"
     echo -e "       source_dir: Location of the Lineage tree; this needs to exist for the script to properly proceed\n"
 }
@@ -191,7 +192,7 @@ for FOLDER in ${SUBS_REPOS}; do
     BRANCH=cm-14.1
 
     # FETCH THE REPO
-    git fetch https://github.com/LineageOMS/${URL} ${BRANCH}
+    git fetch https://github.com/Ungoogled-Lineage/${URL} ${BRANCH}
 
     # GIT GYMNASTICS (GETS MESSY, BEWARE)
     # FIRST HASH WILL ALWAYS BE THE FETCH HEAD
@@ -231,7 +232,7 @@ newLine; echoText "Syncing packages/services/ThemeInterfacer"
 if [[ ! -f .repo/local_manifests/substratum.xml ]]; then
     mkdir -p .repo/local_manifests
     curl --silent --output .repo/local_manifests/substratum.xml \
-    https://raw.githubusercontent.com/LineageOMS/merge_script/master/substratum.xml
+    https://raw.githubusercontent.com/Ungoogled-Lineage/merge_script/master/substratum.xml
 fi
 
 repo sync --force-sync packages/services/ThemeInterfacer
